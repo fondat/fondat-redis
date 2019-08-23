@@ -1,0 +1,22 @@
+os: linux
+
+language: python
+
+dist: bionic 
+
+python:
+    - 3.6
+    - 3.7
+
+before_install:
+    - pip install poetry
+
+install:
+    - poetry install -v
+    - pip install codecov
+
+script:
+    - pytest --cov=roax --cov-report=xml tests/
+
+after_success:
+    - codecov

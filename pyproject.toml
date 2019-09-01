@@ -24,7 +24,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-roax = "^1.4"
+roax = "^1.5"
 redis = "^3.3"
 
 [tool.poetry.dev-dependencies]

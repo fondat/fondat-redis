@@ -7,6 +7,18 @@ from .resource import Conflict, NotFound, Resource
 
 
 class RedisResource(Resource):
+    """
+    Base class for resource that stores items in a Redis database.
+
+    Parameters:
+    • connection_pool: Redis connection pool to access database.
+    • id_schema: Schema of resource item identifiers.
+    • schema: Schema of resource items.
+    • ttl: Maximum item time to live, in seconds.  [unlimited]
+    • name: Short name of the resource.  [class name in lower case]
+    • description: Short description of the resource.  [resource docstring]
+    """
+
     def __init__(
         self,
         connection_pool,
@@ -16,16 +28,6 @@ class RedisResource(Resource):
         name=None,
         description=None,
     ):
-        """
-        Initialize Redis resource.
-
-        :param connection_pool: Redis connection pool to access database.
-        :param id_schema: Schema of resource item identifiers.
-        :param schema: Schema of resource items.
-        :param ttl: Maximum item time to live, in seconds.  [unlimited]
-        :param name: Short name of the resource.  [class name in lower case]
-        :param description: Short description of the resource.  [resource docstring]
-        """
         super().__init__(name, description)
         self.redis = redis.Redis(connection_pool=connection_pool)
         self.schema = schema or self.schema

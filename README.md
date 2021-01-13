@@ -1,13 +1,12 @@
-# Roax-Redis
+# fondat-redis
 
-[![PyPI](https://badge.fury.io/py/roax-redis.svg)](https://badge.fury.io/py/roax-redis)
-[![License](https://img.shields.io/github/license/roax/roax-redis.svg)](https://github.com/roax/roax-redis/blob/master/LICENSE)
-[![GitHub](https://img.shields.io/badge/github-master-blue.svg)](https://github.com/roax/roax-redis/)
-[![Travis CI](https://travis-ci.org/roax/roax-redis.svg?branch=master)](https://travis-ci.org/roax/roax-redis)
-[![Codecov](https://codecov.io/gh/roax/roax-redis/branch/master/graph/badge.svg)](https://codecov.io/gh/roax/roax-redis)
+[![PyPI](https://badge.fury.io/py/fondat-redis.svg)](https://badge.fury.io/py/fondat-redis)
+[![License](https://img.shields.io/github/license/fondat/fondat-redis.svg)](https://github.com/fondat/fondat-redis/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/badge/github-main-blue.svg)](https://github.com/fondat/fondat-redis/)
+[![Test](https://github.com/fondat/fondat-redis/workflows/test/badge.svg)](https://github.com/fondat/fondat-redis/actions?query=workflow/test)
 [![Black](https://img.shields.io/badge/code%20style-black-black.svg)](https://github.com/psf/black)
 
-Roax-Redis: Redis extension for Roax. 
+Fondat module for Redis.
 
 ## Develop
 

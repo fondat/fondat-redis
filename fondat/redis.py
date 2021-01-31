@@ -4,7 +4,7 @@ from aioredis import Redis
 from collections.abc import Iterable
 from fondat.codec import Binary, get_codec
 from fondat.error import NotFoundError
-from fondat.paging import make_page_dataclass
+from fondat.pagination import make_page_dataclass
 from fondat.resource import resource, operation
 from fondat.security import SecurityRequirement
 from typing import Union
@@ -49,9 +49,7 @@ def redis_resource(
         @operation
         async def put(self, value: value_type) -> None:
             """Set value."""
-            await redis.set(
-                self.key, value_codec.encode(value), pexpire=int(expire * 1000)
-            )
+            await redis.set(self.key, value_codec.encode(value), pexpire=int(expire * 1000))
 
         @operation
         async def delete(self) -> None:

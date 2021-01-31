@@ -6,7 +6,7 @@ import fondat.redis
 from dataclasses import dataclass, make_dataclass
 from datetime import date, datetime
 from fondat.error import NotFoundError
-from fondat.paging import paginate
+from fondat.pagination import paginate
 from typing import Optional, TypedDict
 from uuid import UUID
 

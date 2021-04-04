@@ -15,7 +15,7 @@ def redis_resource(
     key_type: type,
     value_type: type,
     expire: Union[int, float] = 0,
-    security: Iterable[Policy] = None,
+    policies: Iterable[Policy] = None,
 ):
     """
     Return a new resource that manages values in a Redis server.

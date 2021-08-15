@@ -14,7 +14,7 @@ def redis_resource(
     redis: Redis,
     key_type: type,
     value_type: type,
-    expire: Union[int, float] = 0,
+    expire: Union[int, float, None] = None,
     policies: Iterable[Policy] = None,
 ):
     """
@@ -41,7 +41,7 @@ def redis_resource(
         @operation(policies=policies)
         async def get(self) -> value_type:
             """Get value."""
-            value = await redis.get(self.key)
+            value = await redis.get(name=self.key)
             if value is None:
                 raise NotFoundError
             return value_codec.decode(value)
@@ -49,7 +49,11 @@ def redis_resource(
         @operation(policies=policies)
         async def put(self, value: value_type) -> None:
             """Set value."""
-            await redis.set(self.key, value_codec.encode(value), pexpire=int(expire * 1000))
+            await redis.set(
+                name=self.key,
+                value=value_codec.encode(value),
+                px=int(expire * 1000) if expire else None,
+            )
 
         @operation(policies=policies)
         async def delete(self) -> None:

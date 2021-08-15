@@ -29,15 +29,18 @@ class DC:
     datetime_: Optional[datetime]
 
 
+@pytest.fixture(scope="module")
+def event_loop():
+    loop = asyncio.new_event_loop()
+    yield loop
+    loop.close()
+
+
 @pytest.fixture(scope="function")
 async def redis():
-    p = await aioredis.create_redis_pool("redis://localhost")
-    await p.flushdb()
-    try:
-        yield p
-    finally:
-        p.close()
-        await p.wait_closed()
+    pool = aioredis.ConnectionPool.from_url("redis://localhost")
+    redis = aioredis.Redis(connection_pool=pool)
+    yield redis
 
 
 @pytest.fixture(scope="function")

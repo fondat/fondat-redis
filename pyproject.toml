@@ -4,7 +4,7 @@ target-version = ['py39']
 
 [tool.poetry]
 name = "fondat-redis"
-version = "3.0b3"
+version = "3.0b4"
 description = "Fondat module for Redis."
 readme = "README.md"
 authors = ["fondat-redis authors"]

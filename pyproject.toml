@@ -23,7 +23,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fondat-core = "^3.0b87"
+fondat-core = "^3.0"
 aioredis = "^2.0"
 
 [tool.poetry.dev-dependencies]

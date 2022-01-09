@@ -7,7 +7,7 @@ from fondat.error import NotFoundError
 from fondat.pagination import make_page_dataclass
 from fondat.resource import resource, operation
 from fondat.security import Policy
-from typing import Union
+from typing import Optional, Union
 
 
 def redis_resource(
@@ -15,7 +15,7 @@ def redis_resource(
     key_type: type,
     value_type: type,
     expire: Union[int, float, None] = None,
-    policies: Iterable[Policy] = None,
+    policies: Optional[Iterable[Policy]] = None,
 ):
     """
     Return a new resource that manages values in a Redis server.
@@ -68,7 +68,9 @@ def redis_resource(
         """Redis database resource."""
 
         @operation(policies=policies)
-        async def get(self, limit: int = None, cursor: bytes = None) -> Page:
+        async def get(
+            self, limit: Optional[int] = None, cursor: Optional[bytes] = None
+        ) -> Page:
             """Return paginated list of keys."""
             kwargs = {"cursor": cursor or b"0"}
             if limit and limit > 0:

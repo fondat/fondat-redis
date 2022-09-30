@@ -1,12 +1,12 @@
-import pytest
-import aioredis
 import asyncio
 import fondat.redis
+import pytest
 
 from dataclasses import dataclass, make_dataclass
 from datetime import date, datetime
 from fondat.error import NotFoundError
 from fondat.pagination import paginate
+from redis import asyncio as aioredis
 from typing import Optional, TypedDict
 from uuid import UUID
 
@@ -31,9 +31,7 @@ class DC:
 
 @pytest.fixture(scope="module")
 def event_loop():
-    loop = asyncio.new_event_loop()
-    yield loop
-    loop.close()
+    return asyncio.new_event_loop()
 
 
 @pytest.fixture(scope="function")
@@ -45,7 +43,7 @@ async def redis():
 
 @pytest.fixture(scope="function")
 async def resource(redis):
-    return fondat.redis.redis_resource(redis, UUID, DC)
+    return fondat.redis.RedisResource(redis, UUID, DC)
 
 
 async def test_crud(resource):
@@ -86,7 +84,7 @@ async def test_crud(resource):
 
 async def test_expire(redis):
     DC = make_dataclass("DC", (("string", str),))
-    resource = fondat.redis.redis_resource(redis, str, DC, expire=0.01)
+    resource = fondat.redis.RedisResource(redis, str, DC, expire=0.01)
     r = resource["a"]
     value = DC("foo")
     await r.put(value)
@@ -99,7 +97,7 @@ async def test_expire(redis):
 
 
 async def test_pagination(redis):
-    resource = fondat.redis.redis_resource(redis, str, str)
+    resource = fondat.redis.RedisResource(redis, str, str)
     count = 1000
     for n in range(0, count):
         await resource[f"{n:04d}"].put("value")

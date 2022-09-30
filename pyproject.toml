@@ -1,3 +1,7 @@
+[build-system]
+requires = ["poetry>=1.1"]
+build-backend = "poetry.masonry.api"
+
 [tool.black]
 line-length = 96
 target-version = ['py310']
@@ -22,13 +26,25 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-fondat-core = "^3.0"
-aioredis = "^2.0"
+python = "^3.10"
+fondat = "^4.0b2"
+redis = "^4.3"
 
 [tool.poetry.dev-dependencies]
-black = "^21.12b0"
-pre-commit = "^2.16"
-pytest = "^6.2"
-pytest-asyncio = "^0.16"
-pytest-cov = "^3.0"
+black = "^22.8"
+isort = "^5.10.1"
+pre-commit = "^2.20"
+pytest = "^7.1"
+pytest-asyncio = "^0.19"
+pytest-cov = "^4.0"
+
+[tool.isort]
+profile = "black"
+lexicographical = true
+lines_after_imports = 2
+lines_between_types = 1
+line_length = 96
+no_sections = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

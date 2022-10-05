@@ -129,7 +129,7 @@ docs = ["sphinx-autodoc-typehints (>=1.19.1)", "sphinx (>=5.1.1)", "furo (>=2022
 
 [[package]]
 name = "fondat"
-version = "4.0b2"
+version = "4.0b4"
 description = "A foundation for resource-oriented backend applications."
 category = "main"
 optional = false
@@ -143,7 +143,7 @@ wrapt = ">=1.14,<2.0"
 
 [[package]]
 name = "identify"
-version = "2.5.5"
+version = "2.5.6"
 description = "File identification library for Python"
 category = "dev"
 optional = false
@@ -410,7 +410,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "83689d71e7650eb891e1800043df45b15277daa6b2b3143a441cae0b39c3438f"
+content-hash = "e852637bd0002d5f5ef3f36402bfedd9ac0e9d13b38a7092442a81bb0beeeec2"
 
 [metadata.files]
 aiosqlite = []

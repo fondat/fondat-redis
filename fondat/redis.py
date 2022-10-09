@@ -36,7 +36,9 @@ class RedisResource(Generic[KT, VT]):
         self.expire = expire
 
     @operation
-    async def get(self, limit: Optional[int] = None, cursor: Optional[bytes] = None) -> Page[KT]:
+    async def get(
+        self, limit: Optional[int] = None, cursor: Optional[bytes] = None
+    ) -> Page[KT]:
         """Return paginated list of keys."""
         kwargs = {"cursor": cursor or b"0"}
         if limit and limit > 0:

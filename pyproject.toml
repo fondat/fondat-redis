@@ -8,7 +8,7 @@ target-version = ['py310']
 
 [tool.poetry]
 name = "fondat-redis"
-version = "4.0b2"
+version = "4.0.0"
 description = "Fondat module for Redis."
 readme = "README.md"
 authors = ["fondat-redis authors"]
@@ -17,7 +17,7 @@ documentation = "https://github.com/fondat/fondat-redis/wiki"
 license = "MIT"
 keywords = ["asgi", "framework", "resource", "openapi"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
 ]
@@ -27,11 +27,11 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fondat = "^4.0b4"
+fondat = "^4.0.0"
 redis = "^4.3"
 
 [tool.poetry.dev-dependencies]
-black = "^22.8"
+black = "^22.10"
 isort = "^5.10.1"
 pre-commit = "^2.20"
 pytest = "^7.1"
